@@ -84,39 +84,19 @@ try:
                     frq.append(curr)
         del frq[0]
         
-    #Ask if the label is Japanese or not.
-    jpn = input('Is this label for Japanese? [y/n] ')
+    jpn = input('Is this label for Chinese? [y/n] ')
     if jpn.lower() == 'y':
-        jpn = True
+        jpn = False
     else:
         jpn = False
         
     fuse = input('Automatically fuse? [y/n] ')
     if fuse.lower() == 'y':
         if jpn:
-        #Fuse CVs
             vowels = ['a', 'i', 'u', 'e', 'o']
-            standalone = ['N', 'cl', 'pau', 'br', 'vf', 'sil', 'Edge']
-            for i in range(len(duration) - 1, -1, -1):
-                if phonemes[i][0] not in vowels:
-                    if phonemes[i] in standalone:
-                        continue
-                    else:
-                        if phonemes[i+1][0] in vowels:
-                            phonemes[i+1] = phonemes[i] + phonemes[i+1]
-                            duration[i-1] += duration[i]
-                            del duration[i]
-                            del phonemes[i]
         else:
-            vowels = None
-            standalone = ['cl', 'pau', 'br', 'vf', 'sil', 'Edge']
-            phoneme_mode = input('Select phoneme set\n1: Arpabet\n2: X-Sampa\n')
-            if phoneme_mode == '1':
-                #Vowel list based on Arpasing
-                vowels = ['aa', 'ae', 'ah', 'ao', 'ax', 'eh', 'er', 'ih', 'iy', 'uh', 'uw', 'aw', 'ay', 'ey', 'ow', 'oy']
-            else:
-                #Vowel list from https://en.wikipedia.org/wiki/X-SAMPA#Vowels
-                vowels = ['i', 'y', '1', '}', 'M', 'u', 'I', 'Y', 'I\\', 'U\\', 'U', 'e', '2', '@\\', '8', '7', 'o', 'e_o', '2_o', '@', 'o_o', 'E', '9', '3', '3\\', 'V', 'O', '{', '6', 'a', '&', 'a_"', 'A', 'Q']
+            standalone = ['pau', 'br', 'exh']
+            vowels = ['a', 'ia', 'ua', 'A', 'iA', 'uA', 'e', 'ie', 'E', 'yu', 'i', 'I', 'ih', 'uo', 'er', 'u', 'V', 'yE', 'uE', 'O', 'iO', 'yI', 'a N', 'a ii', 'iU', 'uu', 'ua N', 'ua ii', 'A ng', 'iA ng', 'A U', 'e N', 'ie N', 'E ii', 'I N', 'I ng', 'V N', 'yE N', 'uE ii', 'O U', 'O ng', 'iO U', 'iO ng', 'yI N']
             phoneme_ranges = []
             duration_ranges = []
             i = 0
@@ -199,9 +179,9 @@ try:
             duration[i-1] -= error
             duration[i] = 15
 
-    quant_strength = input('Quantization in note length (int) [60]: ')
+    quant_strength = input('Quantization in note length (int) [15]: ')
     if not quant_strength:
-        quant_strength = 60
+        quant_strength = 15
     else:
         quant_strength = int(quant_strength)
         

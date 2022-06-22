@@ -1,6 +1,6 @@
 import glob
 import os
-phones = ['br', 'a', 'i', 'u', 'e', 'o', 'N', 'cl', 't', 'd', 's', 'sh', 'j', 'z', 'ts', 'k', 'kw', 'g', 'gw', 'h', 'b', 'p', 'f', 'ch', 'ry', 'ky', 'py', 'dy', 'ty', 'ny', 'hy', 'my', 'gy', 'by', 'n', 'm', 'r', 'w', 'v', 'y', 'pau', 'Edge']
+phones = ['br', 'a', 'ia', 'ua', 'A', 'iA', 'uA', 'ng', 'N', 'e', 'ie', 'E', 'yu', 'i', 'I', 'ih', 'ii', 'U', 'uo', 'er', 'u', 'V', 'yE', 'uE', 'O', 'iO', 'yI', 'iU', 'b', 'c', 'ch', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 'rr', 's', 'sh', 't', 'w', 'x', 'y', 'z', 'zh', 'cl', 'uu', 'vf', 'exh', 'sil', 'pau']
 
 density = {}
 
@@ -21,7 +21,6 @@ for file in glob.glob('*.lab'):
 
             if int(p[0]) == int(p[1]):
                 print(f'In {file}: {p[-1]} has the same start and end. At line {line_count}')
-
             line_count += 1
 
 for k, v in density.items():
